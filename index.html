@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASE FILES: The Unseen - Detective Mystery Game</title>
+    <meta name="description"
+        content="Solve mysterious cases in this immersive 3D detective game. Uncover clues, spot inconsistencies, and reveal the truth.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Special+Elite&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="menu-3d.css">
+    <script src="images.js"></script>
+</head>
+
+<body>
+    <!-- Main Menu Screen - EPIC 3D VERSION -->
+    <div id="main-menu" class="screen active">
+        <div class="film-grain"></div>
+
+        <!-- Animated Background Particles -->
+        <div class="particles-container">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+
+        <!-- 3D Floating Evidence Items -->
+        <div class="floating-evidence">
+            <div class="evidence-float magnifying-glass">🔍</div>
+            <div class="evidence-float fingerprint">👆</div>
+            <div class="evidence-float file">📁</div>
+            <div class="evidence-float key">🔑</div>
+        </div>
+
+        <!-- Spotlight Effect -->
+        <div class="spotlight-beam"></div>
+
+        <div class="menu-content-3d">
+            <div class="title-container-3d">
+                <!-- 3D Layered Title -->
+                <div class="title-3d-layers">
+                    <h1 class="main-title-3d layer-1">CASE FILES</h1>
+                    <h1 class="main-title-3d layer-2">CASE FILES</h1>
+                    <h1 class="main-title-3d layer-3">CASE FILES</h1>
+                </div>
+                <h2 class="subtitle-3d">
+                    <span class="glitch" data-text="The Unseen">The Unseen</span>
+                </h2>
+                <p class="tagline-3d">Where every shadow hides a secret</p>
+
+                <!-- Animated Stats -->
+                <div class="menu-stats">
+                    <div class="stat-item">
+                        <span class="stat-icon">🕵️</span>
+                        <span class="stat-label">Active Cases</span>
+                        <span class="stat-value">4</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">✓</span>
+                        <span class="stat-label">Solved</span>
+                        <span class="stat-value" id="solved-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-icon">🏆</span>
+                        <span class="stat-label">Accuracy</span>
+                        <span class="stat-value">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Holographic Menu Buttons -->
+            <div class="menu-buttons-3d">
+                <button class="menu-btn-3d primary-3d" onclick="startGame()">
+                    <span class="btn-glow"></span>
+                    <span class="btn-icon-3d">🔍</span>
+                    <span class="btn-text-3d">Begin Investigation</span>
+                    <span class="btn-shine"></span>
+                </button>
+                <button class="menu-btn-3d" onclick="showCredits()">
+                    <span class="btn-glow"></span>
+                    <span class="btn-icon-3d">📋</span>
+                    <span class="btn-text-3d">Case Archives</span>
+                    <span class="btn-shine"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Animated Corner Frames -->
+        <div class="corner-frame top-left">
+            <svg viewBox="0 0 100 100" class="corner-svg">
+                <polyline points="0,20 0,0 20,0" class="corner-line" />
+            </svg>
+        </div>
+        <div class="corner-frame top-right">
+            <svg viewBox="0 0 100 100" class="corner-svg">
+                <polyline points="80,0 100,0 100,20" class="corner-line" />
+            </svg>
+        </div>
+        <div class="corner-frame bottom-left">
+            <svg viewBox="0 0 100 100" class="corner-svg">
+                <polyline points="0,80 0,100 20,100" class="corner-line" />
+            </svg>
+        </div>
+        <div class="corner-frame bottom-right">
+            <svg viewBox="0 0 100 100" class="corner-svg">
+                <polyline points="80,100 100,100 100,80" class="corner-line" />
+            </svg>
+        </div>
+    </div>
+
+    <!-- Case Selection Desk -->
+    <div id="case-desk" class="screen">
+        <div class="film-grain"></div>
+
+        <div class="desk-container" id="desk-container">
+            <div class="desk-surface">
+                <div class="desk-light"></div>
+
+                <!-- Case Files -->
+                <div class="case-file unlocked" data-case="1" onclick="openCase(1)">
+                    <div class="file-folder">
+                        <div class="file-tab">CASE #001</div>
+                        <div class="file-content">
+                            <div class="file-stamp">ACTIVE</div>
+                            <h3 class="file-title">The Missing Heirloom</h3>
+                            <p class="file-desc">A priceless artifact vanished from a locked room.</p>
+                            <div class="file-difficulty">
+                                <span class="diff-label">Difficulty:</span>
+                                <span class="diff-stars">★★☆☆☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-file unlocked" data-case="2" onclick="openCase(2)">
+                    <div class="file-folder">
+                        <div class="file-tab">CASE #002</div>
+                        <div class="file-content">
+                            <div class="file-stamp">ACTIVE</div>
+                            <h3 class="file-title">Midnight Alibi</h3>
+                            <p class="file-desc">Three suspects. One liar. Find the truth.</p>
+                            <div class="file-difficulty">
+                                <span class="diff-label">Difficulty:</span>
+                                <span class="diff-stars">★★★☆☆</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-file locked" data-case="3">
+                    <div class="file-folder">
+                        <div class="file-tab">CASE #003</div>
+                        <div class="file-content">
+                            <div class="file-stamp locked-stamp">LOCKED</div>
+                            <h3 class="file-title">???</h3>
+                            <p class="file-desc">Solve previous cases to unlock.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-file locked" data-case="4">
+                    <div class="file-folder">
+                        <div class="file-tab">CASE #004</div>
+                        <div class="file-content">
+                            <div class="file-stamp locked-stamp">LOCKED</div>
+                            <h3 class="file-title">???</h3>
+                            <p class="file-desc">Solve previous cases to unlock.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desk Items for Atmosphere -->
+                <div class="desk-item coffee-cup"></div>
+                <div class="desk-item notepad"></div>
+                <div class="desk-item pen"></div>
+            </div>
+        </div>
+
+        <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+    </div>
+
+    <!-- Case #1: Visual Evidence Examination -->
+    <div id="case-1" class="screen case-screen">
+        <div class="film-grain"></div>
+
+        <div class="case-header">
+            <h2 class="case-number">CASE #001</h2>
+            <h1 class="case-title">The Missing Heirloom</h1>
+            <p class="case-briefing">Examine the evidence. Click on witnesses to hear their testimony. Rotate the 3D
+                necklace. Study the crime scene photo.</p>
+        </div>
+
+        <!-- Visual Evidence Grid -->
+        <div class="visual-evidence-grid">
+            <!-- 3D Rotating Necklace -->
+            <div class="evidence-item featured" id="necklace-3d">
+                <div class="evidence-label">THE STOLEN NECKLACE</div>
+                <div class="rotating-3d-container">
+                    <img id="necklace-img" class="rotating-3d" src="" alt="Diamond Necklace">
+                </div>
+                <p class="evidence-desc">Priceless 19th century heirloom • Last seen 3:15 PM</p>
+            </div>
+
+            <!-- Crime Scene Photo -->
+            <div class="evidence-item" onclick="examineEvidence('crime-scene')">
+                <div class="evidence-label">CRIME SCENE</div>
+                <div class="photo-container">
+                    <img id="crime-scene-img" class="evidence-photo" src="" alt="Crime Scene">
+                    <div class="photo-overlay">
+                        <span class="examine-icon">🔍 EXAMINE</span>
+                    </div>
+                </div>
+                <p class="evidence-desc">Bedroom window • 4:00 PM</p>
+            </div>
+
+            <!-- Witness Portraits -->
+            <div class="witness-portrait" onclick="interrogateWitness(1, 'butler')" data-witness="1">
+                <div class="portrait-frame">
+                    <img id="butler-img" class="character-portrait" src="" alt="Butler James">
+                    <div class="portrait-overlay">
+                        <span class="interrogate-icon">💬 QUESTION</span>
+                    </div>
+                </div>
+                <div class="witness-info">
+                    <h3>Butler James</h3>
+                    <p class="witness-time">Testimony: 3:00 PM - 3:15 PM</p>
+                </div>
+            </div>
+
+            <div class="witness-portrait" onclick="interrogateWitness(2, 'maid')" data-witness="2">
+                <div class="portrait-frame">
+                    <img id="maid-img" class="character-portrait" src="" alt="Maid Catherine">
+                    <div class="portrait-overlay">
+                        <span class="interrogate-icon">💬 QUESTION</span>
+                    </div>
+                </div>
+                <div class="witness-info">
+                    <h3>Maid Catherine</h3>
+                    <p class="witness-time">Testimony: 2:00 PM - 2:30 PM</p>
+                </div>
+            </div>
+
+            <div class="witness-portrait inconsistency" onclick="interrogateWitness(3, 'niece')" data-witness="3">
+                <div class="portrait-frame">
+                    <img id="niece-img" class="character-portrait" src="" alt="Niece Victoria">
+                    <div class="portrait-overlay">
+                        <span class="interrogate-icon">💬 QUESTION</span>
+                    </div>
+                </div>
+                <div class="witness-info">
+                    <h3>Victoria Ashford</h3>
+                    <p class="witness-time">Testimony: 4:00 PM</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-question">
+            <p><strong>🔍 Who's testimony doesn't match the evidence?</strong></p>
+            <p class="hint-text">Examine the crime scene photo and compare witness timelines...</p>
+        </div>
+
+        <button class="back-btn" onclick="backToDesk()">← Back to Desk</button>
+    </div>
+
+    <!-- Case #2: Suspect Lineup -->
+    <div id="case-2" class="screen case-screen">
+        <div class="film-grain"></div>
+
+        <div class="case-header">
+            <h2 class="case-number">CASE #002</h2>
+            <h1 class="case-title">Midnight Alibi</h1>
+            <p class="case-briefing">A valuable painting was stolen at midnight. Examine each suspect carefully. One
+                alibi doesn't hold up...</p>
+        </div>
+
+        <div class="suspects-container">
+            <div class="suspect-card" onclick="selectSuspect(2, 1)">
+                <div class="suspect-portrait-frame">
+                    <img id="marcus-img" class="suspect-portrait-img" src="" alt="Marcus Chen">
+                </div>
+                <h3 class="suspect-name">Marcus Chen</h3>
+                <div class="alibi-statement">
+                    <p class="alibi-label">Alibi:</p>
+                    <p class="alibi-text">"I was at the 24-hour diner on Main Street. The waitress can confirm I was
+                        there from 11 PM to 1 AM."</p>
+                </div>
+                <div class="evidence-tag">✓ Diner receipt: 11:47 PM</div>
+            </div>
+
+            <div class="suspect-card liar" onclick="selectSuspect(2, 2)">
+                <div class="suspect-portrait-frame">
+                    <img id="elena-img" class="suspect-portrait-img" src="" alt="Elena Rodriguez">
+                </div>
+                <h3 class="suspect-name">Elena Rodriguez</h3>
+                <div class="alibi-statement">
+                    <p class="alibi-label">Alibi:</p>
+                    <p class="alibi-text">"I was home alone, painting in my studio. I have timestamped photos of my
+                        work-in-progress from that night."</p>
+                </div>
+                <div class="evidence-tag warning">⚠ Photo metadata: 8 PM (not midnight)</div>
+            </div>
+
+            <div class="suspect-card" onclick="selectSuspect(2, 3)">
+                <div class="suspect-portrait-frame">
+                    <img id="david-img" class="suspect-portrait-img" src="" alt="David Park">
+                </div>
+                <h3 class="suspect-name">David Park</h3>
+                <div class="alibi-statement">
+                    <p class="alibi-label">Alibi:</p>
+                    <p class="alibi-text">"I was fixing a broken pipe at the Johnson residence. They called me at 11:30
+                        PM for an emergency repair."</p>
+                </div>
+                <div class="evidence-tag">✓ Work order signed: 12:15 AM</div>
+            </div>
+        </div>
+
+        <div class="case-question">
+            <p><strong>🎭 Who is lying about their alibi?</strong></p>
+            <p class="hint-text">Check the evidence tags carefully...</p>
+        </div>
+
+        <button class="back-btn" onclick="backToDesk()">← Back to Desk</button>
+    </div>
+
+    <!-- Case #3: Digital Heist (Cyber Theme) -->
+    <div id="case-3" class="screen case-screen cyber-theme">
+        <div class="matrix-overlay"></div>
+
+        <div class="case-header">
+            <h2 class="case-number cyber-text">CASE #003</h2>
+            <h1 class="case-title cyber-glitch">Digital Heist</h1>
+            <p class="case-briefing cyber-text">Bank server compromised. Funds diverted to offshore accounts. Two
+                hackers are working together. Identify both the <strong>Insider</strong> and the <strong>External
+                    Breaker</strong>.</p>
+        </div>
+
+        <div class="cyber-grid">
+            <div class="server-status">
+                <div class="status-header">SERVER LOGS</div>
+                <div class="log-entry">10:00 PM - Admin login (IP: Internal)</div>
+                <div class="log-entry warning">10:05 PM - Firewall disabled</div>
+                <div class="log-entry danger">10:07 PM - External connection (IP: Unknown)</div>
+                <div class="log-entry danger">10:15 PM - 50M Transferred</div>
+            </div>
+
+            <div class="suspect-grid">
+                <!-- Suspect 1 -->
+                <div class="cyber-suspect" onclick="selectMultiSuspect(3, 1)">
+                    <div class="cyber-avatar">
+                        <img id="hacker1-img" src="" alt="SysAdmin">
+                    </div>
+                    <div class="cyber-info">
+                        <h3>Sarah Jenkins</h3>
+                        <p class="role">SysAdmin</p>
+                        <p class="cyber-note">"I was home. My badge was stolen."</p>
+                    </div>
+                    <div class="selection-marker"></div>
+                </div>
+
+                <!-- Suspect 2 -->
+                <div class="cyber-suspect" onclick="selectMultiSuspect(3, 2)">
+                    <div class="cyber-avatar">
+                        <img id="hacker2-img" src="" alt="Night Guard">
+                    </div>
+                    <div class="cyber-info">
+                        <h3>Mike Ross</h3>
+                        <p class="role">Night Guard</p>
+                        <p class="cyber-note">"Saw nothing suspicious."</p>
+                    </div>
+                    <div class="selection-marker"></div>
+                </div>
+
+                <!-- Suspect 3 -->
+                <div class="cyber-suspect" onclick="selectMultiSuspect(3, 3)">
+                    <div class="cyber-avatar">
+                        <img id="hacker3-img" src="" alt="NetSec Lead">
+                    </div>
+                    <div class="cyber-info">
+                        <h3>Alex Chen</h3>
+                        <p class="role">NetSec Lead</p>
+                        <p class="cyber-note">Found 10k encrypted deposit.</p>
+                    </div>
+                    <div class="selection-marker"></div>
+                </div>
+
+                <!-- Suspect 4 (External) -->
+                <div class="cyber-suspect" onclick="selectMultiSuspect(3, 4)">
+                    <div class="cyber-avatar">
+                        <img id="hacker4-img" src="" alt="Unknown Hacker">
+                    </div>
+                    <div class="cyber-info">
+                        <h3>'ZeroCool'</h3>
+                        <p class="role">Blackhat</p>
+                        <p class="cyber-note">Signature found in code.</p>
+                    </div>
+                    <div class="selection-marker"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-actions">
+            <p class="selection-count">Suspects Selected: <span id="c3-count">0</span>/2</p>
+            <button class="cyber-btn" onclick="submitAccusation(3)">🛑 EXECUTE ARREST PROTOCOL</button>
+        </div>
+
+        <button class="back-btn cyber-back" onclick="backToDesk()">← DISCONNECT</button>
+    </div>
+
+    <!-- Case #4: The Conspiracy (Noir Board Theme) -->
+    <div id="case-4" class="screen case-screen conspiracy-theme">
+        <div class="cork-texture"></div>
+        <div class="string-overlay"></div>
+
+        <div class="case-header">
+            <h2 class="case-number paper-text">CASE #004</h2>
+            <h1 class="case-title paper-text">The Conspiracy</h1>
+            <p class="case-briefing paper-text">Corporate espionage at Omega Corp. Three individuals conspired to leak
+                the prototype. Connect the dots. Who is the <strong>Mole</strong>, the <strong>Broker</strong>, and the
+                <strong>Buyer</strong>?</p>
+        </div>
+
+        <div class="conspiracy-board">
+            <!-- Polaroids pinned to board -->
+            <div class="polaroid" onclick="selectMultiSuspect(4, 1)" style="transform: rotate(-5deg);">
+                <div class="polaroid-img">
+                    <img id="mole-img" src="" alt="The Executive">
+                </div>
+                <div class="hand-note">The Executive</div>
+                <div class="pin"></div>
+                <div class="selection-stamp">GUILTY</div>
+            </div>
+
+            <div class="polaroid" onclick="selectMultiSuspect(4, 2)" style="transform: rotate(3deg);">
+                <div class="polaroid-img">
+                    <img id="broker-img" src="" alt="The Secretary">
+                </div>
+                <div class="hand-note">The Secretary</div>
+                <div class="pin"></div>
+                <div class="selection-stamp">GUILTY</div>
+            </div>
+
+            <div class="polaroid" onclick="selectMultiSuspect(4, 3)" style="transform: rotate(-2deg);">
+                <div class="polaroid-img">
+                    <img id="janitor-img" src="" alt="The Janitor">
+                </div>
+                <div class="hand-note">The Janitor</div>
+                <div class="pin"></div>
+                <div class="selection-stamp">GUILTY</div>
+            </div>
+
+            <div class="polaroid" onclick="selectMultiSuspect(4, 4)" style="transform: rotate(6deg);">
+                <div class="polaroid-img">
+                    <img id="buyer-img" src="" alt="Rival CEO">
+                </div>
+                <div class="hand-note">Rival CEO</div>
+                <div class="pin"></div>
+                <div class="selection-stamp">GUILTY</div>
+            </div>
+
+            <div class="polaroid" onclick="selectMultiSuspect(4, 5)" style="transform: rotate(-4deg);">
+                <div class="polaroid-img">
+                    <img id="driver-img" src="" alt="The Driver">
+                </div>
+                <div class="hand-note">The Driver</div>
+                <div class="pin"></div>
+                <div class="selection-stamp">GUILTY</div>
+            </div>
+        </div>
+
+        <div class="sticky-note-container">
+            <div class="sticky-note yellow">
+                <p>Meeting recorded: 2 AM at Docks.</p>
+            </div>
+            <div class="sticky-note pink">
+                <p>Bank transfer: $1M split 3 ways.</p>
+            </div>
+        </div>
+
+        <div class="case-actions">
+            <p class="paper-count">Conspirators Identified: <span id="c4-count">0</span>/3</p>
+            <button class="paper-btn" onclick="submitAccusation(4)">📂 CLOSE THE FILE</button>
+        </div>
+
+        <button class="back-btn paper-back" onclick="backToDesk()">← Back to Desk</button>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">✓</div>
+            <h2 class="modal-title">Case Solved!</h2>
+            <p class="modal-message" id="success-message"></p>
+            <button class="modal-btn" onclick="closeModal()">Continue Investigation</button>
+        </div>
+    </div>
+
+    <!-- Failure Modal -->
+    <div id="failure-modal" class="modal">
+        <div class="modal-content failure">
+            <div class="failure-icon">✗</div>
+            <h2 class="modal-title">Not Quite...</h2>
+            <p class="modal-message">Review the evidence more carefully. Every detail matters in detective work.</p>
+            <button class="modal-btn" onclick="closeModal()">Try Again</button>
+        </div>
+    </div>
+
+    <!-- Testimony Modal -->
+    <div id="testimony-modal" class="modal testimony-modal">
+        <div class="modal-content testimony-content">
+            <button class="close-testimony" onclick="closeTestimony()">✕</button>
+            <div class="testimony-portrait">
+                <img id="testimony-portrait-img" src="" alt="Witness">
+            </div>
+            <h3 id="testimony-name" class="testimony-name"></h3>
+            <div class="testimony-text-container">
+                <p id="testimony-text" class="testimony-text"></p>
+            </div>
+            <button class="modal-btn" onclick="accuse()">🔍 ACCUSE THIS WITNESS</button>
+        </div>
+    </div>
+
+    <!-- Evidence Examination Modal -->
+    <div id="evidence-modal" class="modal evidence-modal">
+        <div class="modal-content evidence-content">
+            <button class="close-testimony" onclick="closeEvidence()">✕</button>
+            <h3 class="evidence-modal-title">Crime Scene Evidence</h3>
+            <div class="evidence-zoom">
+                <img id="evidence-zoom-img" src="" alt="Evidence">
+            </div>
+            <div class="evidence-notes">
+                <h4>Detective's Notes:</h4>
+                <ul>
+                    <li>Window latch broken from the <strong>inside</strong></li>
+                    <li>Muddy footprints on windowsill</li>
+                    <li>No signs of forced entry on door</li>
+                    <li>Curtains blowing - window currently open</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

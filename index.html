@@ -12,9 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Special+Elite&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=7">
     <link rel="stylesheet" href="menu-3d.css">
-    <script src="images.js"></script>
+    <script src="images.js?v=5"></script>
 </head>
 
 <body>
@@ -193,24 +193,24 @@
     <div id="case-1" class="screen case-screen">
         <div class="film-grain"></div>
 
-        <div class="case-header">
-            <h2 class="case-number">CASE #001</h2>
-            <h1 class="case-title">The Missing Heirloom</h1>
-            <p class="case-briefing">Examine the evidence. Click on witnesses to hear their testimony. Rotate the 3D
-                necklace. Study the crime scene photo.</p>
-        </div>
-
-        <!-- Visual Evidence Grid -->
-        <div class="visual-evidence-grid">
-            <!-- 3D Rotating Necklace -->
-            <div class="evidence-item featured" id="necklace-3d">
-                <div class="evidence-label">THE STOLEN NECKLACE</div>
-                <div class="rotating-3d-container">
-                    <img id="necklace-img" class="rotating-3d" src="" alt="Diamond Necklace">
-                </div>
-                <p class="evidence-desc">Priceless 19th century heirloom • Last seen 3:15 PM</p>
+        <div class="case-intro-flex">
+            <div class="case-header-content">
+                <h2 class="case-number">CASE #001</h2>
+                <h1 class="case-title">The Missing Heirloom</h1>
+                <p class="case-briefing">Examine the evidence. Click on witnesses to hear their testimony. Rotate the 3D
+                    necklace to find clues. Study the crime scene photo carefully.</p>
             </div>
 
+            <div class="evidence-preview-3d" id="necklace-3d">
+                <div class="evidence-label">STOLEN ARTIFACT</div>
+                <div class="rotating-3d-container small-3d">
+                    <img id="necklace-img" class="rotating-3d" src="" alt="Diamond Necklace">
+                </div>
+            </div>
+        </div>
+
+        <!-- Visual Evidence Grid (Restored) -->
+        <div class="visual-evidence-grid three-col">
             <!-- Crime Scene Photo -->
             <div class="evidence-item" onclick="examineEvidence('crime-scene')">
                 <div class="evidence-label">CRIME SCENE</div>
@@ -263,13 +263,16 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
 
-        <div class="case-question">
-            <p><strong>🔍 Who's testimony doesn't match the evidence?</strong></p>
-            <p class="hint-text">Examine the crime scene photo and compare witness timelines...</p>
-        </div>
+    <div class="case-question">
+        <p><strong>🔍 Who's testimony doesn't match the evidence?</strong></p>
+        <p class="hint-text">Examine the crime scene photo and compare witness timelines...</p>
+    </div>
 
-        <button class="back-btn" onclick="backToDesk()">← Back to Desk</button>
+    <button class="back-btn" onclick="backToDesk()">← Back to Desk</button>
     </div>
 
     <!-- Case #2: Suspect Lineup -->
@@ -426,7 +429,8 @@
             <h1 class="case-title paper-text">The Conspiracy</h1>
             <p class="case-briefing paper-text">Corporate espionage at Omega Corp. Three individuals conspired to leak
                 the prototype. Connect the dots. Who is the <strong>Mole</strong>, the <strong>Broker</strong>, and the
-                <strong>Buyer</strong>?</p>
+                <strong>Buyer</strong>?
+            </p>
         </div>
 
         <div class="conspiracy-board">
@@ -549,7 +553,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=3"></script>
 </body>
 
 </html>

@@ -51,6 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // ============================================
 
 function loadAllImages() {
+    // Check if GAME_IMAGES exists
+    const imagesArray = window.GAME_IMAGES || GAME_IMAGES;
+    if (!imagesArray) {
+        console.error('GAME_IMAGES not found!');
+        return;
+    }
+
     // Case 1
     const butlerImg = document.getElementById('butler-img');
     const maidImg = document.getElementById('maid-img');
@@ -58,32 +65,32 @@ function loadAllImages() {
     const necklaceImg = document.getElementById('necklace-img');
     const crimeSceneImg = document.getElementById('crime-scene-img');
 
-    if (butlerImg) butlerImg.src = GAME_IMAGES.butler;
-    if (maidImg) maidImg.src = GAME_IMAGES.maid;
-    if (nieceImg) nieceImg.src = GAME_IMAGES.niece;
-    if (necklaceImg) necklaceImg.src = GAME_IMAGES.necklace;
-    if (crimeSceneImg) crimeSceneImg.src = GAME_IMAGES.crimeScene;
+    if (butlerImg) butlerImg.src = imagesArray.butler;
+    if (maidImg) maidImg.src = imagesArray.maid;
+    if (nieceImg) nieceImg.src = imagesArray.niece;
+    if (necklaceImg) necklaceImg.src = imagesArray.necklace;
+    if (crimeSceneImg) crimeSceneImg.src = imagesArray.crimeScene;
 
     // Case 2
     const marcusImg = document.getElementById('marcus-img');
     const elenaImg = document.getElementById('elena-img');
     const davidImg = document.getElementById('david-img');
 
-    if (marcusImg) marcusImg.src = GAME_IMAGES.marcus;
-    if (elenaImg) elenaImg.src = GAME_IMAGES.elena;
-    if (davidImg) davidImg.src = GAME_IMAGES.david;
+    if (marcusImg) marcusImg.src = imagesArray.marcus;
+    if (elenaImg) elenaImg.src = imagesArray.elena;
+    if (davidImg) davidImg.src = imagesArray.david;
 
     // Case 3
     for (let i = 1; i <= 4; i++) {
         const img = document.getElementById(`hacker${i}-img`);
-        if (img) img.src = GAME_IMAGES[`hacker${i}`];
+        if (img) img.src = imagesArray[`hacker${i}`];
     }
 
     // Case 4
     const roles = ['mole', 'broker', 'janitor', 'buyer', 'driver'];
     roles.forEach(role => {
         const img = document.getElementById(`${role}-img`);
-        if (img) img.src = GAME_IMAGES[role];
+        if (img) img.src = imagesArray[role];
     });
 
     console.log('✓ All images loaded');

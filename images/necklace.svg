@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#16a085"/>
+  <circle cx="200" cy="200" r="80" stroke="#f1c40f" stroke-width="10" fill="none"/>
+  <polygon points="200,280 180,310 220,310" fill="#f1c40f"/>
+  <text x="200" y="380" font-family="Arial" font-size="24" fill="white" text-anchor="middle">DIAMOND NECKLACE</text>
+</svg>

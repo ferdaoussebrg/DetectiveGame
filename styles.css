@@ -1492,8 +1492,8 @@ body {
 .suspect-portrait-img {
     width: 100%;
     height: 100%;
-    object-fit: contain !important;
-    object-position: bottom center !important;
+    object-fit: cover;
+    object-position: center !important;
 }
 
 .placeholder-portrait {
